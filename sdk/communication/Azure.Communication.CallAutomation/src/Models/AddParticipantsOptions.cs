@@ -15,7 +15,7 @@ namespace Azure.Communication.CallAutomation
         /// Creates a new AddParticipantsOptions object.
         /// </summary>
         /// <param name="participantsToAdd"></param>
-        public AddParticipantsOptions(IEnumerable<CallTarget> participantsToAdd)
+        public AddParticipantsOptions(IEnumerable<CallInvite> participantsToAdd)
         {
             ParticipantsToAdd = participantsToAdd;
             RepeatabilityHeaders = new RepeatabilityHeaders();
@@ -24,7 +24,7 @@ namespace Azure.Communication.CallAutomation
         /// <summary>
         /// The list of identity of participants to be added to the call.
         /// </summary>
-        public IEnumerable<CallTarget> ParticipantsToAdd { get; }
+        public IEnumerable<CallInvite> ParticipantsToAdd { get; }
 
         /// <summary>
         /// The operationContext for this add participants call.
@@ -42,8 +42,5 @@ namespace Azure.Communication.CallAutomation
         /// Repeatability Headers.
         /// </summary>
         public RepeatabilityHeaders RepeatabilityHeaders { get; set; }
-
-        /// <summary> Used by customer to pass in context to targets. </summary>
-        public CustomContext CustomContext { get; set; }
     }
 }

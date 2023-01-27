@@ -39,22 +39,10 @@ namespace Azure.Communication.CallAutomation
         public string SourceDisplayName { get; set; }
 
         /// <summary>
-        /// TCommunicationUserIdentifier
-        /// </summary>
-        /// <value></value>
-        public CommunicationUserIdentifier SourceUserIdentifier { get; set; }
-
-        /// <summary>
-        /// (Optional) The identifier of the source of the call for this invite operation. If SourceDisplayName
-        /// is not set, the display name of the source will be used by default when adding a PSTN participant or teams user.
-        /// </summary>
-        public MicrosoftTeamsUserIdentifier SourceTeamsUserIdentifier { get; set; }
-
-        /// <summary>
         /// TODO: Combine this with SourceIdentifier
         /// </summary>
         /// <value></value>
-        public PhoneNumberIdentifier SourcePhoneNumberIdentifier { get; set; }
+        public PhoneNumberIdentifier SourceCallerIdNumber { get; set; }
 
         /// <summary> Used by customer to pass in context to targets. </summary>
         public CustomContext CustomContext { get; set; }

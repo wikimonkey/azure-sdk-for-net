@@ -41,7 +41,7 @@ namespace Azure.Communication.CallAutomation
         /// <returns> A new <see cref="CallAutomation.CallConnectionProperties"/> instance for mocking. </returns>
         public static CallConnectionProperties CallConnectionProperties(string callConnectionId = default, string serverCallId = default, IEnumerable<CommunicationIdentifier> targets = default, CallConnectionState callConnectionState = default, Uri callbackEndpoint = default, string mediaSubscriptionId = default)
         {
-            return new CallConnectionProperties(callConnectionId, serverCallId, null, targets, callConnectionState, callbackEndpoint, mediaSubscriptionId);
+            return new CallConnectionProperties(callConnectionId, serverCallId, targets, callConnectionState, callbackEndpoint, mediaSubscriptionId);
         }
 
         /// <summary> Initializes a new instance of CallParticipant. </summary>

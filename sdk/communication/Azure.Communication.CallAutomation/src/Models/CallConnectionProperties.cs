@@ -10,11 +10,10 @@ namespace Azure.Communication.CallAutomation
     /// <summary> The call connection properties. </summary>
     public class CallConnectionProperties
     {
-        internal CallConnectionProperties(string callConnectionId, string serverCallId, CallSource callSource, IEnumerable<CommunicationIdentifier> targets, CallConnectionState callConnectionState, Uri callbackEndpoint, string mediaSubscriptionId)
+        internal CallConnectionProperties(string callConnectionId, string serverCallId,  IEnumerable<CommunicationIdentifier> targets, CallConnectionState callConnectionState, Uri callbackEndpoint, string mediaSubscriptionId)
         {
             CallConnectionId = callConnectionId;
             ServerCallId = serverCallId;
-            CallSource = callSource;
             Targets = targets == null ? new List<CommunicationIdentifier>() : targets.ToList();
             CallConnectionState = callConnectionState == default(CallConnectionState) ? CallConnectionState.Unknown : callConnectionState;
             CallbackEndpoint = callbackEndpoint;
@@ -25,7 +24,6 @@ namespace Azure.Communication.CallAutomation
         {
             CallConnectionId = callConnectionPropertiesDtoInternal.CallConnectionId;
             ServerCallId = callConnectionPropertiesDtoInternal.ServerCallId;
-            CallSource = null;
             Targets = callConnectionPropertiesDtoInternal.Targets.Select(t => CommunicationIdentifierSerializer.Deserialize(t)).ToList();
 
             if (callConnectionPropertiesDtoInternal.CallConnectionState == null || callConnectionPropertiesDtoInternal.CallConnectionState ==  default(CallConnectionState))
@@ -45,8 +43,14 @@ namespace Azure.Communication.CallAutomation
         public string CallConnectionId { get; }
         /// <summary> The server call id. </summary>
         public string ServerCallId { get; }
-        /// <summary> The source of the call. </summary>
-        public CallSource CallSource { get; }
+
+        /// <summary> Summary </summary>
+        public PhoneNumberIdentifier SouceCallerIdNumber { get; set; }
+        /// <summary> Summary </summary>
+        public string SourceDisplayName { get; set; }
+        /// <summary> Summary </summary>
+        public CommunicationIdentifier Source { get; }
+
         /// <summary> The targets of the call. </summary>
         public IReadOnlyList<CommunicationIdentifier> Targets { get; }
         /// <summary> The state of the call connection. </summary>

@@ -53,6 +53,6 @@ namespace Azure.Communication.CallAutomation
         /// <summary>
         /// Source Identity <see cref="CommunicationUserIdentifier"/>.
         /// </summary>
-        public CommunicationUserIdentifier SourceIdenty { get; }
+        public CommunicationUserIdentifier Source { get; }
     }
 }

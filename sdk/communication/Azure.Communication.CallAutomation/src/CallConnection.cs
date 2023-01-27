@@ -363,7 +363,7 @@ namespace Azure.Communication.CallAutomation
             // validate ParticipantsToAdd is not null or empty
             Argument.AssertNotNullOrEmpty(options.ParticipantsToAdd, nameof(options.ParticipantsToAdd));
 
-            AddParticipantsRequestInternal request = new AddParticipantsRequestInternal(options.ParticipantsToAdd.Select(t => CommunicationIdentifierSerializer.Serialize(t.TargetIdentity)).ToList());
+            AddParticipantsRequestInternal request = new AddParticipantsRequestInternal(options.ParticipantsToAdd.Select(t => CommunicationIdentifierSerializer.Serialize(t.Target)).ToList());
 
             if (options.InvitationTimeoutInSeconds != null &&
                 (options.InvitationTimeoutInSeconds < CallAutomationConstants.InputValidation.MinInvitationTimeoutInSeconds ||

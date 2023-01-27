@@ -89,7 +89,7 @@ namespace Azure.Communication.CallAutomation
             CallMediaRestClient = new CallMediaRestClient(_clientDiagnostics, httpPipeline, _endpoint, options.ApiVersion);
             CallRecordingRestClient = new CallRecordingRestClient(_clientDiagnostics, httpPipeline, _endpoint, options.ApiVersion);
             EventProcessor = new EventProcessor(options.EventProcessorOptions);
-            SourceIdentity = options.SourceIdenty;
+            SourceIdentity = options.Source;
         }
 
         private CallAutomationClient(Uri endpoint, CallAutomationClientOptions options, ConnectionString connectionString)
@@ -243,14 +243,14 @@ namespace Azure.Communication.CallAutomation
 
         /// Redirect an incoming call to the target identity.
         /// <param name="incomingCallContext"> The incoming call context </param>
-        /// <param name="target"> The target identity. </param>
+        /// <param name="callInvite"> The target identity. </param>
         /// <param name="cancellationToken"> The cancellation token. </param>
         /// <exception cref="RequestFailedException">The server returned an error. See <see cref="Exception.Message"/> for details returned from the server.</exception>
         /// <exception cref="ArgumentNullException"><paramref name="incomingCallContext"/> is null.</exception>
-        /// <exception cref="ArgumentNullException"><paramref name="target"/> is null.</exception>
-        public virtual async Task<Response> RedirectCallAsync(string incomingCallContext, CallTarget target, CancellationToken cancellationToken = default)
+        /// <exception cref="ArgumentNullException"><paramref name="callInvite"/> is null.</exception>
+        public virtual async Task<Response> RedirectCallAsync(string incomingCallContext, CallInvite callInvite, CancellationToken cancellationToken = default)
         {
-            RedirectCallOptions options = new RedirectCallOptions(incomingCallContext, target);
+            RedirectCallOptions options = new RedirectCallOptions(incomingCallContext, callInvite);
 
             return await RedirectCallAsync(options, cancellationToken).ConfigureAwait(false);
         }
@@ -270,7 +270,7 @@ namespace Azure.Communication.CallAutomation
                 if (options == null)
                     throw new ArgumentNullException(nameof(options));
 
-                RedirectCallRequestInternal request = new RedirectCallRequestInternal(options.IncomingCallContext, CommunicationIdentifierSerializer.Serialize(options.Target.TargetIdentity));
+                RedirectCallRequestInternal request = new RedirectCallRequestInternal(options.IncomingCallContext, CommunicationIdentifierSerializer.Serialize(options.Target.Target));
                 options.RepeatabilityHeaders?.GenerateIfRepeatabilityHeadersNotProvided();
 
                 return await AzureCommunicationServicesRestClient.RedirectCallAsync(
@@ -289,14 +289,14 @@ namespace Azure.Communication.CallAutomation
 
         /// Redirect an incoming call to the target identities.
         /// <param name="incomingCallContext"> The incoming call context </param>
-        /// <param name="target"> The target identities. </param>
+        /// <param name="callInvite"> The target identities. </param>
         /// <param name="cancellationToken"> The cancellation token. </param>
         /// <exception cref="RequestFailedException">The server returned an error. See <see cref="Exception.Message"/> for details returned from the server.</exception>
         /// <exception cref="ArgumentNullException"><paramref name="incomingCallContext"/> is null.</exception>
-        /// <exception cref="ArgumentNullException"><paramref name="target"/> is null.</exception>
-        public virtual Response RedirectCall(string incomingCallContext, CallTarget target, CancellationToken cancellationToken = default)
+        /// <exception cref="ArgumentNullException"><paramref name="callInvite"/> is null.</exception>
+        public virtual Response RedirectCall(string incomingCallContext, CallInvite callInvite, CancellationToken cancellationToken = default)
         {
-            RedirectCallOptions options = new RedirectCallOptions(incomingCallContext, target);
+            RedirectCallOptions options = new RedirectCallOptions(incomingCallContext, callInvite);
 
             return RedirectCall(options, cancellationToken);
         }
@@ -316,7 +316,7 @@ namespace Azure.Communication.CallAutomation
                 if (options == null)
                     throw new ArgumentNullException(nameof(options));
 
-                RedirectCallRequestInternal request = new RedirectCallRequestInternal(options.IncomingCallContext, CommunicationIdentifierSerializer.Serialize(options.Target.TargetIdentity));
+                RedirectCallRequestInternal request = new RedirectCallRequestInternal(options.IncomingCallContext, CommunicationIdentifierSerializer.Serialize(options.Target.Target));
                 options.RepeatabilityHeaders?.GenerateIfRepeatabilityHeadersNotProvided();
 
                 return AzureCommunicationServicesRestClient.RedirectCall(
@@ -608,7 +608,7 @@ namespace Azure.Communication.CallAutomation
             // when create call to PSTN, the CallSource.CallerId must be provided.
             if (options.Targets.Any(target => target is PhoneNumberIdentifier))
             {
-                Argument.AssertNotNull(options.CallTarget.SourceCallerIdNumber, nameof(options.CallTarget.SourceCallerIdNumber));
+                Argument.AssertNotNull(options.CallInvite.SourceCallerIdNumber, nameof(options.CallInvite.SourceCallerIdNumber));
             }
 
             // validate targets is not null or empty
@@ -620,9 +620,9 @@ namespace Azure.Communication.CallAutomation
                 throw new ArgumentException(CallAutomationErrorMessages.InvalidHttpsUriMessage, nameof(options));
             }
 
-            CallSourceInternal sourceDto = new CallSourceInternal(CommunicationIdentifierSerializer.Serialize(options.CallTarget.SourceCallerIdNumber));
-            sourceDto.CallerId = options.CallTarget.SourceCallerIdNumber == null ? null : new PhoneNumberIdentifierModel(options.CallTarget.SourceCallerIdNumber.PhoneNumber);
-            sourceDto.DisplayName = options.CallTarget.SourceDisplayName;
+            CallSourceInternal sourceDto = new CallSourceInternal(CommunicationIdentifierSerializer.Serialize(options.CallInvite.SourceCallerIdNumber));
+            sourceDto.CallerId = options.CallInvite.SourceCallerIdNumber == null ? null : new PhoneNumberIdentifierModel(options.CallInvite.SourceCallerIdNumber.PhoneNumber);
+            sourceDto.DisplayName = options.CallInvite.SourceDisplayName;
 
             CreateCallRequestInternal request = new CreateCallRequestInternal(
                 options.Targets.Select(t => CommunicationIdentifierSerializer.Serialize(t)),

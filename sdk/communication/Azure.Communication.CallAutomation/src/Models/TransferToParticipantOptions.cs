@@ -13,17 +13,17 @@ namespace Azure.Communication.CallAutomation
         /// <summary>
         /// Creates a new TransferToParticipantOptions object.
         /// </summary>
-        /// <param name="targetParticipant"></param>
-        public TransferToParticipantOptions(CallTarget targetParticipant)
+        /// <param name="callInvite"></param>
+        public TransferToParticipantOptions(CallInvite callInvite)
         {
-            TargetParticipant = targetParticipant;
+            CallInvite = callInvite;
             RepeatabilityHeaders = new RepeatabilityHeaders();
         }
 
         /// <summary>
         /// The target participant to transfer the call to.
         /// </summary>
-        public CallTarget TargetParticipant { get; } // CallAutomationDAssignment/Routing, target = library
+        public CallInvite CallInvite { get; }
 
         /// <summary>
         /// The operationContext for this transfer call.

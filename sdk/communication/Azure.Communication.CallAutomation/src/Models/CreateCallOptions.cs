@@ -16,14 +16,14 @@ namespace Azure.Communication.CallAutomation
         /// <summary>
         /// Summary
         /// </summary>
-        /// <param name="callTarget"></param>
+        /// <param name="callInvite"></param>
         /// <param name="callbackUri"></param>
-        public CreateCallOptions(CallTarget callTarget, Uri callbackUri)
+        public CreateCallOptions(CallInvite callInvite, Uri callbackUri)
         {
-            CallTarget = callTarget;
+            CallInvite = callInvite;
             CallbackUri = callbackUri;
             // CallSource = new CommunicationUserIdentifier(Guid.NewGuid().ToString());
-            Targets = new ReadOnlyCollection<CommunicationIdentifier>(new List<CommunicationIdentifier> { { callTarget.TargetIdentity } });
+            Targets = new ReadOnlyCollection<CommunicationIdentifier>(new List<CommunicationIdentifier> { { callInvite.Target } });
             RepeatabilityHeaders = new RepeatabilityHeaders();
         }
 
@@ -47,7 +47,7 @@ namespace Azure.Communication.CallAutomation
         /// Summary
         /// </summary>
         /// <value></value>
-        public CallTarget CallTarget { get; }
+        public CallInvite CallInvite { get; }
 
         /// <summary>
         /// The targets of the call.
