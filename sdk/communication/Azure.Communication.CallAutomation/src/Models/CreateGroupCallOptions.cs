@@ -9,14 +9,14 @@ namespace Azure.Communication.CallAutomation
     /// <summary>
     /// Options for the Create Call Request.
     /// </summary>
-    public class CreateSimRingCallOptions
+    public class CreateGroupCallOptions
     {
         /// <summary>
         /// Summary
         /// </summary>
         /// <param name="targets"></param>
         /// <param name="callbackUri"></param>
-        public CreateSimRingCallOptions(IEnumerable<CommunicationIdentifier> targets, Uri callbackUri)
+        public CreateGroupCallOptions(IEnumerable<CommunicationIdentifier> targets, Uri callbackUri)
         {
             Targets = (IReadOnlyList<CommunicationIdentifier>)targets;
             CallbackUri = callbackUri;
@@ -44,8 +44,17 @@ namespace Azure.Communication.CallAutomation
         /// <value></value>
         public PhoneNumberIdentifier SourceCallerIdNumber { get; set; }
 
-        /// <summary> Used by customer to pass in context to targets. </summary>
-        public CustomContext CustomContext { get; set; }
+        /// <summary>
+        /// headers
+        /// </summary>
+        /// <value></value>
+        public IDictionary<string, string> SIPHeaders { get; }
+
+        /// <summary>
+        /// headers
+        /// </summary>
+        /// <value></value>
+        public IDictionary<string, string> VoIPHeaders { get; }
 
         /// <summary>
         /// The Operation context.
@@ -60,7 +69,7 @@ namespace Azure.Communication.CallAutomation
         /// <summary>
         /// Repeatability Headers.
         /// </summary>
-        public RepeatabilityHeaders RepeatabilityHeaders { get; set; }
+        internal RepeatabilityHeaders RepeatabilityHeaders { get; set; }
 
         /// <summary>
         /// The endpoint URL of the Azure Cognitive Services resource attached

@@ -494,8 +494,8 @@ namespace Azure.Communication.CallAutomation
         /// <param name="options"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        public virtual async Task<Response<CreateCallResult>> CreateSimRingCallAsync(
-            CreateSimRingCallOptions options,
+        public virtual async Task<Response<CreateCallResult>> CreateGroupCallAsync(
+            CreateGroupCallOptions options,
             CancellationToken cancellationToken = default)
         {
             await Task.Delay(1, cancellationToken).ConfigureAwait(false);
@@ -508,8 +508,8 @@ namespace Azure.Communication.CallAutomation
         /// <param name="options"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        public virtual Response<CreateCallResult> CreateSimRingCall(
-            CreateSimRingCallOptions options,
+        public virtual Response<CreateCallResult> CreateGroupCall(
+            CreateGroupCallOptions options,
             CancellationToken cancellationToken = default)
         {
             throw new NotImplementedException();

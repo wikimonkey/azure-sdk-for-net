@@ -49,7 +49,7 @@ namespace Azure.Communication.CallAutomation
         /// <summary>
         /// Repeatability Headers.
         /// </summary>
-        public RepeatabilityHeaders RepeatabilityHeaders { get; set; }
+        internal RepeatabilityHeaders RepeatabilityHeaders { get; set; }
 
         /// <summary>
         /// The sequential order in which audio channels are assigned to participants in the unmixed recording.

@@ -40,11 +40,16 @@ namespace Azure.Communication.CallAutomation
         /// <summary>
         /// Repeatability Headers.
         /// </summary>
-        public RepeatabilityHeaders RepeatabilityHeaders { get; set; }
+        internal RepeatabilityHeaders RepeatabilityHeaders { get; set; }
 
         /// <summary>
         /// The endpoint URL of the Azure Cognitive Services resource attached
         /// </summary>
         public Uri AzureCognitiveServicesEndpointUrl { get; set; }
+
+        /// <summary>
+        /// The endpoint URL of the Azure Cognitive Services resource attached
+        /// </summary>
+        public bool ImpersonateCallReceiver { get; set; } = true;
     }
 }

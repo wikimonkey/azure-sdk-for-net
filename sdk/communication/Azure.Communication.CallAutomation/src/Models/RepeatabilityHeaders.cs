@@ -8,7 +8,7 @@ namespace Azure.Communication.CallAutomation
     /// <summary>
     /// The Repeatability Headers.
     /// </summary>
-    public class RepeatabilityHeaders
+    internal class RepeatabilityHeaders
     {
         /// <summary>
         /// The value of the Repeatability-Request-Id is an opaque string representing a client-generated unique identifier for the request. It is a version 4 (random) UUID.

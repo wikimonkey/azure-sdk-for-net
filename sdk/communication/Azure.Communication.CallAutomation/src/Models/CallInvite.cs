@@ -1,6 +1,8 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
+using System.Collections.Generic;
+
 namespace Azure.Communication.CallAutomation
 {
     /// <summary>
@@ -13,19 +15,23 @@ namespace Azure.Communication.CallAutomation
         /// </summary>
         /// <param name="targetPhoneNumberIdentity"></param>
         /// <param name="callerIdNumber"></param>
-        public CallInvite(PhoneNumberIdentifier targetPhoneNumberIdentity, PhoneNumberIdentifier callerIdNumber)
+        /// <param name="sipHeaders"></param>
+        public CallInvite(PhoneNumberIdentifier targetPhoneNumberIdentity, PhoneNumberIdentifier callerIdNumber, IDictionary<string, string> sipHeaders = null)
         {
             Target = targetPhoneNumberIdentity;
             SourceCallerIdNumber = callerIdNumber;
+            SIPHeaders = sipHeaders;
         }
 
         /// <summary>
         /// Summary
         /// </summary>
         /// <param name="targetIdentity"></param>
-        public CallInvite(CommunicationUserIdentifier targetIdentity)
+        /// <param name="voipHeaders"></param>
+        public CallInvite(CommunicationUserIdentifier targetIdentity, IDictionary<string, string> voipHeaders = null)
         {
             Target = targetIdentity;
+            VoIPHeaders = voipHeaders;
         }
 
         /// <summary>
@@ -63,7 +69,16 @@ namespace Azure.Communication.CallAutomation
         /// </summary>
         public string SourceDisplayName { get; set; }
 
-        /// <summary> Used by customer to pass in context to targets. </summary>
-        public CustomContext CustomContext { get; set; }
+        /// <summary>
+        /// headers
+        /// </summary>
+        /// <value></value>
+        public IDictionary<string, string> SIPHeaders { get; }
+
+        /// <summary>
+        /// headers
+        /// </summary>
+        /// <value></value>
+        public IDictionary<string, string> VoIPHeaders { get; }
     }
 }
