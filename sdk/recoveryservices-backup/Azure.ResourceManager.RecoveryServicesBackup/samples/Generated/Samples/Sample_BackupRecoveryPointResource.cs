@@ -117,9 +117,9 @@ namespace Azure.ResourceManager.RecoveryServicesBackup.Samples
             BackupRecoveryPointResource backupRecoveryPoint = client.GetBackupRecoveryPointResource(backupRecoveryPointResourceId);
 
             // invoke the operation
-            RestoreRequestResource restoreRequestResource = new RestoreRequestResource(new AzureLocation("placeholder"))
+            TriggerRestoreContent content = new TriggerRestoreContent(new AzureLocation("placeholder"))
             {
-                Properties = new IaasVmRestoreRequest()
+                Properties = new IaasVmRestoreContent()
                 {
                     RecoveryPointId = "348916168024334",
                     RecoveryType = RecoveryType.RestoreDisks,
@@ -139,7 +139,7 @@ namespace Azure.ResourceManager.RecoveryServicesBackup.Samples
                     },
                 },
             };
-            await backupRecoveryPoint.TriggerRestoreAsync(WaitUntil.Completed, restoreRequestResource);
+            await backupRecoveryPoint.TriggerRestoreAsync(WaitUntil.Completed, content);
 
             Console.WriteLine($"Succeeded");
         }
@@ -170,9 +170,9 @@ namespace Azure.ResourceManager.RecoveryServicesBackup.Samples
             BackupRecoveryPointResource backupRecoveryPoint = client.GetBackupRecoveryPointResource(backupRecoveryPointResourceId);
 
             // invoke the operation
-            RestoreRequestResource restoreRequestResource = new RestoreRequestResource(new AzureLocation("placeholder"))
+            TriggerRestoreContent content = new TriggerRestoreContent(new AzureLocation("placeholder"))
             {
-                Properties = new IaasVmRestoreRequest()
+                Properties = new IaasVmRestoreContent()
                 {
                     RecoveryPointId = "348916168024334",
                     RecoveryType = RecoveryType.RestoreDisks,
@@ -195,7 +195,7 @@ namespace Azure.ResourceManager.RecoveryServicesBackup.Samples
                     },
                 },
             };
-            await backupRecoveryPoint.TriggerRestoreAsync(WaitUntil.Completed, restoreRequestResource);
+            await backupRecoveryPoint.TriggerRestoreAsync(WaitUntil.Completed, content);
 
             Console.WriteLine($"Succeeded");
         }
@@ -226,9 +226,9 @@ namespace Azure.ResourceManager.RecoveryServicesBackup.Samples
             BackupRecoveryPointResource backupRecoveryPoint = client.GetBackupRecoveryPointResource(backupRecoveryPointResourceId);
 
             // invoke the operation
-            RestoreRequestResource restoreRequestResource = new RestoreRequestResource(new AzureLocation("placeholder"))
+            TriggerRestoreContent content = new TriggerRestoreContent(new AzureLocation("placeholder"))
             {
-                Properties = new IaasVmRestoreWithRehydrationRequest()
+                Properties = new IaasVmRestoreWithRehydrationContent()
                 {
                     RecoveryPointRehydrationInfo = new RecoveryPointRehydrationInfo()
                     {
@@ -248,7 +248,7 @@ namespace Azure.ResourceManager.RecoveryServicesBackup.Samples
                     },
                 },
             };
-            await backupRecoveryPoint.TriggerRestoreAsync(WaitUntil.Completed, restoreRequestResource);
+            await backupRecoveryPoint.TriggerRestoreAsync(WaitUntil.Completed, content);
 
             Console.WriteLine($"Succeeded");
         }
@@ -279,9 +279,9 @@ namespace Azure.ResourceManager.RecoveryServicesBackup.Samples
             BackupRecoveryPointResource backupRecoveryPoint = client.GetBackupRecoveryPointResource(backupRecoveryPointResourceId);
 
             // invoke the operation
-            RestoreRequestResource restoreRequestResource = new RestoreRequestResource(new AzureLocation("placeholder"))
+            TriggerRestoreContent content = new TriggerRestoreContent(new AzureLocation("placeholder"))
             {
-                Properties = new IaasVmRestoreRequest()
+                Properties = new IaasVmRestoreContent()
                 {
                     RecoveryPointId = "348916168024334",
                     RecoveryType = RecoveryType.AlternateLocation,
@@ -304,7 +304,7 @@ namespace Azure.ResourceManager.RecoveryServicesBackup.Samples
                     },
                 },
             };
-            await backupRecoveryPoint.TriggerRestoreAsync(WaitUntil.Completed, restoreRequestResource);
+            await backupRecoveryPoint.TriggerRestoreAsync(WaitUntil.Completed, content);
 
             Console.WriteLine($"Succeeded");
         }
@@ -335,9 +335,9 @@ namespace Azure.ResourceManager.RecoveryServicesBackup.Samples
             BackupRecoveryPointResource backupRecoveryPoint = client.GetBackupRecoveryPointResource(backupRecoveryPointResourceId);
 
             // invoke the operation
-            RestoreRequestResource restoreRequestResource = new RestoreRequestResource(new AzureLocation("placeholder"))
+            TriggerRestoreContent content = new TriggerRestoreContent(new AzureLocation("placeholder"))
             {
-                Properties = new IaasVmRestoreRequest()
+                Properties = new IaasVmRestoreContent()
                 {
                     RecoveryPointId = "348916168024334",
                     RecoveryType = RecoveryType.AlternateLocation,
@@ -363,7 +363,7 @@ namespace Azure.ResourceManager.RecoveryServicesBackup.Samples
                     },
                 },
             };
-            await backupRecoveryPoint.TriggerRestoreAsync(WaitUntil.Completed, restoreRequestResource);
+            await backupRecoveryPoint.TriggerRestoreAsync(WaitUntil.Completed, content);
 
             Console.WriteLine($"Succeeded");
         }
@@ -394,9 +394,9 @@ namespace Azure.ResourceManager.RecoveryServicesBackup.Samples
             BackupRecoveryPointResource backupRecoveryPoint = client.GetBackupRecoveryPointResource(backupRecoveryPointResourceId);
 
             // invoke the operation
-            RestoreRequestResource restoreRequestResource = new RestoreRequestResource(new AzureLocation("placeholder"))
+            TriggerRestoreContent content = new TriggerRestoreContent(new AzureLocation("placeholder"))
             {
-                Properties = new IaasVmRestoreWithRehydrationRequest()
+                Properties = new IaasVmRestoreWithRehydrationContent()
                 {
                     RecoveryPointRehydrationInfo = new RecoveryPointRehydrationInfo()
                     {
@@ -420,7 +420,7 @@ namespace Azure.ResourceManager.RecoveryServicesBackup.Samples
                     },
                 },
             };
-            await backupRecoveryPoint.TriggerRestoreAsync(WaitUntil.Completed, restoreRequestResource);
+            await backupRecoveryPoint.TriggerRestoreAsync(WaitUntil.Completed, content);
 
             Console.WriteLine($"Succeeded");
         }
@@ -451,9 +451,9 @@ namespace Azure.ResourceManager.RecoveryServicesBackup.Samples
             BackupRecoveryPointResource backupRecoveryPoint = client.GetBackupRecoveryPointResource(backupRecoveryPointResourceId);
 
             // invoke the operation
-            IlrRequestContent content = new IlrRequestContent(new AzureLocation("placeholder"))
+            ProvisionIlrConnectionContent content = new ProvisionIlrConnectionContent(new AzureLocation("placeholder"))
             {
-                Properties = new IaasVmilrRegistrationRequest()
+                Properties = new IaasVmIlrRegistrationContent()
                 {
                     RecoveryPointId = "38823086363464",
                     VirtualMachineId = new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pysdktestrg/providers/Microsoft.Compute/virtualMachines/pysdktestv2vm1"),

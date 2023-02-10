@@ -45,14 +45,14 @@ rename-mapping:
   AzureBackupGoalFeatureSupportRequest: BackupGoalFeatureSupportContent
   AzureBackupServerContainer: BackupServerContainer
   AzureBackupServerEngine: BackupServerEngine
-  AzureFileShareBackupRequest: FileShareBackupRequest
+  AzureFileShareBackupRequest: FileShareBackupContent
   AzureFileShareProtectableItem: FileShareProtectableItem
   AzureFileshareProtectedItem: FileshareProtectedItem
   AzureFileshareProtectedItemExtendedInfo: FileshareProtectedItemExtendedInfo
   AzureFileShareProtectionPolicy: FileShareProtectionPolicy
-  AzureFileShareProvisionILRRequest: FileShareProvisionIlrRequest
+  AzureFileShareProvisionILRRequest: FileShareProvisionIlrContent
   AzureFileShareRecoveryPoint: FileShareRecoveryPoint
-  AzureFileShareRestoreRequest: FileShareRestoreRequest
+  AzureFileShareRestoreRequest: FileShareRestoreContent
   AzureFileShareType: BackupFileShareType
   AzureIaaSClassicComputeVMContainer: IaasClassicComputeVmContainer
   AzureIaaSClassicComputeVMProtectableItem: IaasClassicComputeVmProtectableItem
@@ -110,7 +110,7 @@ rename-mapping:
   AzureVmWorkloadSQLInstanceProtectableItem: VmWorkloadSqlInstanceProtectableItem
   AzureVmWorkloadSQLInstanceWorkloadItem: VmWorkloadSqlInstanceWorkloadItem
   AzureWorkloadAutoProtectionIntent: WorkloadAutoProtectionIntent
-  AzureWorkloadBackupRequest: WorkloadBackupRequest
+  AzureWorkloadBackupRequest: WorkloadBackupContent
   AzureWorkloadContainer: WorkloadContainer
   AzureWorkloadContainerAutoProtectionIntent: WorkloadContainerAutoProtectionIntent
   AzureWorkloadContainerExtendedInfo: WorkloadContainerExtendedInfo
@@ -119,25 +119,25 @@ rename-mapping:
   AzureWorkloadJobExtendedInfo: WorkloadJobExtendedInfo
   AzureWorkloadJobTaskDetails: WorkloadJobTaskDetails
   AzureWorkloadPointInTimeRecoveryPoint: WorkloadPointInTimeRecoveryPoint
-  AzureWorkloadPointInTimeRestoreRequest: WorkloadPointInTimeRestoreRequest
+  AzureWorkloadPointInTimeRestoreRequest: WorkloadPointInTimeRestoreContent
   AzureWorkloadSAPHanaPointInTimeRecoveryPoint: WorkloadSapHanaPointInTimeRecoveryPoint
   AzureWorkloadRecoveryPoint: WorkloadRecoveryPoint
-  AzureWorkloadRestoreRequest: WorkloadRestoreRequest
-  AzureWorkloadSAPHanaPointInTimeRestoreRequest: WorkloadSapHanaPointInTimeRestoreRequest
-  AzureWorkloadSAPHanaPointInTimeRestoreWithRehydrateRequest: WorkloadSapHanaPointInTimeRestoreWithRehydrateRequest
+  AzureWorkloadRestoreRequest: WorkloadRestoreContent
+  AzureWorkloadSAPHanaPointInTimeRestoreRequest: WorkloadSapHanaPointInTimeRestoreContent
+  AzureWorkloadSAPHanaPointInTimeRestoreWithRehydrateRequest: WorkloadSapHanaPointInTimeRestoreWithRehydrateContent
   AzureWorkloadSAPHanaRecoveryPoint: WorkloadSapHanaRecoveryPoint
-  AzureWorkloadSAPHanaRestoreRequest: WorkloadSapHanaRestoreRequest
-  AzureWorkloadSAPHanaRestoreWithRehydrateRequest: WorkloadSapHanaRestoreWithRehydrateRequest
+  AzureWorkloadSAPHanaRestoreRequest: WorkloadSapHanaRestoreContent
+  AzureWorkloadSAPHanaRestoreWithRehydrateRequest: WorkloadSapHanaRestoreWithRehydrateContent
   AzureWorkloadSQLAutoProtectionIntent: WorkloadSqlAutoProtectionIntent
   AzureWorkloadSQLPointInTimeRecoveryPoint: WorkloadSqlPointInTimeRecoveryPoint
-  AzureWorkloadSQLPointInTimeRestoreRequest: WorkloadSqlPointInTimeRestoreRequest
-  AzureWorkloadSQLPointInTimeRestoreWithRehydrateRequest: WorkloadSqlPointInTimeRestoreWithRehydrateRequest
+  AzureWorkloadSQLPointInTimeRestoreRequest: WorkloadSqlPointInTimeRestoreContent
+  AzureWorkloadSQLPointInTimeRestoreWithRehydrateRequest: WorkloadSqlPointInTimeRestoreWithRehydrateContent
   AzureWorkloadSQLRecoveryPoint: WorkloadSqlRecoveryPoint
   AzureWorkloadSQLRecoveryPointExtendedInfo: WorkloadSqlRecoveryPointExtendedInfo
-  AzureWorkloadSQLRestoreRequest: WorkloadSqlRestoreRequest
-  AzureWorkloadSQLRestoreWithRehydrateRequest: WorkloadSqlRestoreWithRehydrateRequest
-  BackupRequest: BackupRequestProperties
-  BackupRequestResource: BackupRequestContent
+  AzureWorkloadSQLRestoreRequest: WorkloadSqlRestoreContent
+  AzureWorkloadSQLRestoreWithRehydrateRequest: WorkloadSqlRestoreWithRehydrateContent
+  BackupRequest: BackupContent
+  BackupRequestResource: TriggerBackupContent
   BackupStatusResponse: BackupStatusResult
   CreateMode: BackupCreateMode
   DataSourceType: BackupDataSourceType
@@ -153,8 +153,8 @@ rename-mapping:
   HealthStatus: IaasVmProtectedItemHealthStatus
   ProtectedItemHealthStatus: VmWorkloadProtectedItemHealthStatus
   HourlySchedule: BackupHourlySchedule
-  ILRRequest: IlrRequestProperties
-  ILRRequestResource: ILRRequestContent
+  ILRRequest: IlrContent
+  ILRRequestResource: ProvisionIlrConnectionContent
   ListRecoveryPointsRecommendedForMoveRequest: RecoveryPointsRecommendedForMoveContent
   MonthOfYear: BackupMonthOfYear
   NameInfo: BackupNameInfo
@@ -191,10 +191,11 @@ rename-mapping:
   BEKDetails.secretVaultId: -|arm-id
   ContainerIdentityInfo.aadTenantId: -|uuid
   ProtectableContainer.containerId: -|arm-id
-  AzureFileShareBackupRequest.recoveryPointExpiryTimeInUTC: RecoveryPointExpiryOn
+  AzureFileShareBackupRequest.recoveryPointExpiryTimeInUTC: RecoveryPointExpireOn
   AzureFileShareRestoreRequest.sourceResourceId: -|arm-id
-  IaasVMBackupRequest.recoveryPointExpiryTimeInUTC: RecoveryPointExpiryOn
+  IaasVMBackupRequest.recoveryPointExpiryTimeInUTC: RecoveryPointExpireOn
   IaaSVMContainer.virtualMachineId: -|arm-id
+  IaasVmilrRegistrationRequest: IaasVmIlrRegistrationContent
   IaasVmilrRegistrationRequest.virtualMachineId: -|arm-id
   IaaSVMProtectableItem.virtualMachineId: -|arm-id
   AzureIaaSVMProtectedItem.virtualMachineId: -|arm-id
@@ -223,7 +224,7 @@ rename-mapping:
   EncryptionDetails.secretKeyVaultId: -|arm-id
   SupportStatus.DefaultOFF: DefaultOff
   SupportStatus.DefaultON: DefaultOn
-  AzureWorkloadBackupRequest.recoveryPointExpiryTimeInUTC: RecoveryPointExpiryOn
+  AzureWorkloadBackupRequest.recoveryPointExpiryTimeInUTC: RecoveryPointExpireOn
   AzureWorkloadContainer.sourceResourceId: -|arm-id
   AzureWorkloadRecoveryPoint.recoveryPointTimeInUTC: RecoveryPointCreatedOn
   AzureWorkloadRestoreRequest.sourceResourceId: -|arm-id
@@ -232,8 +233,21 @@ rename-mapping:
   ProtectedItem.deferredDeleteTimeInUTC: DeferredDeletedOn
   AzureFileShareProvisionILRRequest.sourceResourceId: -|arm-id
   PrepareDataMoveRequest.sourceContainerArmIds: -|arm-id
-  UnlockDeleteResponse.unlockDeleteExpiryTime: UnlockDeleteExpiryOn|datetime
+  UnlockDeleteResponse.unlockDeleteExpiryTime: UnlockDeleteExpireOn|datetime
   PrepareDataMoveRequest.targetRegion: -|azure-location
+  BackupResourceEncryptionConfigExtended.userAssignedIdentity: -|arm-id
+  RestoreRequest: RestoreContent
+  RestoreRequestResource: TriggerRestoreContent
+  RecoveryPointProperties.expiryTime: ExpireOn
+  DataSourceType.SQLDataBase: SqlDatabase
+  BackupItemType.SQLDataBase: SqlDatabase
+  WorkloadType.SQLDataBase: SqlDatabase
+  WorkloadItemType.SQLDataBase: SqlDatabase
+  IaasVMBackupRequest: IaasVmBackupContent
+  IaasVMRestoreRequest: IaasVmRestoreContent
+  IaasVMRestoreWithRehydrationRequest: IaasVmRestoreWithRehydrationContent
+  ResourceGuardOperationDetail.defaultResourceRequest: DefaultResourceId|arm-id
+  InquiryInfo: WorkloadContainerInquiryInfo
 
 format-by-name-rules:
   'tenantId': 'uuid'
@@ -281,7 +295,6 @@ rename-rules:
   AFS: Afs
   SAP: Sap
   SqlDb: SqlDB
-  BMS: Bms
   PIN: Pin
 
 override-operation-name:
@@ -292,15 +305,19 @@ override-operation-name:
   BackupProtectedItems_List: GetBackupProtectedItems
   BackupProtectionContainers_List: GetBackupProtectionContainers
   SecurityPINs_Get: GetSecurityPin
+  BMSPrepareDataMove: PrepareDataMove
+  BMSTriggerDataMove: TriggerDataMove
 
 list-exception:
   - /Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupstorageconfig/vaultstorageconfig
   - /Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/backupProtectionIntent/{intentObjectName}
-  - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig
-  - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupEncryptionConfigs/backupResourceEncryptionConfig
   - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/privateEndpointConnections/{privateEndpointConnectionName}
   - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}
   - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}
+
+request-path-to-singleton-resource:
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupEncryptionConfigs/backupResourceEncryptionConfig: backupEncryptionConfigs/backupResourceEncryptionConfig
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig: backupconfig/vaultconfig
 
 directive:
   - remove-operation: Operation_Validate

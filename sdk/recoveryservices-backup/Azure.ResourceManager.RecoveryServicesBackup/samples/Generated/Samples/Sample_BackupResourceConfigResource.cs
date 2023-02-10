@@ -91,7 +91,7 @@ namespace Azure.ResourceManager.RecoveryServicesBackup.Samples
         // Prepare Data Move
         [NUnit.Framework.Test]
         [NUnit.Framework.Ignore("Only verifying that the sample builds")]
-        public async Task BmsPrepareDataMove_PrepareDataMove()
+        public async Task PrepareDataMove_PrepareDataMove()
         {
             // Generated from example definition: specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2023-01-01/examples/BackupDataMove/PrepareDataMove_Post.json
             // this example is just showing the usage of "BMSPrepareDataMove" operation, for the dependent resources, they will have to be created separately.
@@ -111,7 +111,7 @@ namespace Azure.ResourceManager.RecoveryServicesBackup.Samples
 
             // invoke the operation
             PrepareDataMoveContent content = new PrepareDataMoveContent(new ResourceIdentifier("/subscriptions/04cf684a-d41f-4550-9f70-7708a3a2283b/resourceGroups/targetRG/providers/Microsoft.RecoveryServices/vaults/target-rsv"), new AzureLocation("USGov Virginia"), DataMoveLevel.Vault);
-            await backupResourceConfig.BmsPrepareDataMoveAsync(WaitUntil.Completed, content);
+            await backupResourceConfig.PrepareDataMoveAsync(WaitUntil.Completed, content);
 
             Console.WriteLine($"Succeeded");
         }
@@ -119,7 +119,7 @@ namespace Azure.ResourceManager.RecoveryServicesBackup.Samples
         // Trigger Data Move
         [NUnit.Framework.Test]
         [NUnit.Framework.Ignore("Only verifying that the sample builds")]
-        public async Task BmsTriggerDataMove_TriggerDataMove()
+        public async Task TriggerDataMove_TriggerDataMove()
         {
             // Generated from example definition: specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2023-01-01/examples/BackupDataMove/TriggerDataMove_Post.json
             // this example is just showing the usage of "BMSTriggerDataMove" operation, for the dependent resources, they will have to be created separately.
@@ -139,7 +139,7 @@ namespace Azure.ResourceManager.RecoveryServicesBackup.Samples
 
             // invoke the operation
             TriggerDataMoveContent content = new TriggerDataMoveContent(new ResourceIdentifier("/subscriptions/04cf684a-d41f-4550-9f70-7708a3a2283b/resourceGroups/sourceRG/providers/Microsoft.RecoveryServices/vaults/source-rsv"), new AzureLocation("USGov Iowa"), DataMoveLevel.Vault, "MTg2OTcyMzM4NzYyMjc1NDY3Nzs1YmUzYmVmNi04YjJiLTRhOTItOTllYi01NTM0MDllYjk2NjE=");
-            await backupResourceConfig.BmsTriggerDataMoveAsync(WaitUntil.Completed, content);
+            await backupResourceConfig.TriggerDataMoveAsync(WaitUntil.Completed, content);
 
             Console.WriteLine($"Succeeded");
         }

@@ -632,7 +632,7 @@ DateTimeOffset.Parse("2018-01-24T10:00:00Z")
             {
                 Properties = new VmWorkloadProtectionPolicy()
                 {
-                    WorkLoadType = BackupWorkloadType.SqlDataBase,
+                    WorkLoadType = BackupWorkloadType.SqlDatabase,
                     Settings = new BackupCommonSettings()
                     {
                         TimeZone = "Pacific Standard Time",

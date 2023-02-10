@@ -52,7 +52,7 @@ namespace Azure.ResourceManager.RecoveryServicesBackup.Samples
         // Update Vault Encryption Configuration
         [NUnit.Framework.Test]
         [NUnit.Framework.Ignore("Only verifying that the sample builds")]
-        public async Task Update_UpdateVaultEncryptionConfiguration()
+        public async Task CreateOrUpdate_UpdateVaultEncryptionConfiguration()
         {
             // Generated from example definition: specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2023-01-01/examples/BackupResourceEncryptionConfig_Put.json
             // this example is just showing the usage of "BackupResourceEncryptionConfigs_Update" operation, for the dependent resources, they will have to be created separately.
@@ -81,7 +81,7 @@ namespace Azure.ResourceManager.RecoveryServicesBackup.Samples
                     InfrastructureEncryptionState = new InfrastructureEncryptionState("true"),
                 },
             };
-            await backupResourceEncryptionConfigExtended.UpdateAsync(WaitUntil.Completed, content);
+            await backupResourceEncryptionConfigExtended.CreateOrUpdateAsync(WaitUntil.Completed, content);
 
             Console.WriteLine($"Succeeded");
         }

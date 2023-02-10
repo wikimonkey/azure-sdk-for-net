@@ -227,9 +227,9 @@ namespace Azure.ResourceManager.RecoveryServicesBackup.Samples
             BackupProtectedItemResource backupProtectedItem = client.GetBackupProtectedItemResource(backupProtectedItemResourceId);
 
             // invoke the operation
-            BackupRequestContent content = new BackupRequestContent(new AzureLocation("placeholder"))
+            TriggerBackupContent content = new TriggerBackupContent(new AzureLocation("placeholder"))
             {
-                Properties = new IaasVmBackupRequest(),
+                Properties = new IaasVmBackupContent(),
             };
             await backupProtectedItem.TriggerBackupAsync(content);
 
