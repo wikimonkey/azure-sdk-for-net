@@ -38,7 +38,7 @@ namespace Azure.ResourceManager.RecoveryServicesBackup.Samples
             SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
 
             // invoke the operation
-            string azureRegion = "southeastasia";
+            AzureLocation azureRegion = new AzureLocation("southeastasia");
             BackupStatusContent content = new BackupStatusContent()
             {
                 ResourceType = BackupDataSourceType.Vm,
@@ -69,7 +69,7 @@ namespace Azure.ResourceManager.RecoveryServicesBackup.Samples
             SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
 
             // invoke the operation
-            string azureRegion = "southeastasia";
+            AzureLocation azureRegion = new AzureLocation("southeastasia");
             FeatureSupportContent content = new VmResourceFeatureSupportContent()
             {
                 VmSize = "Basic_A0",

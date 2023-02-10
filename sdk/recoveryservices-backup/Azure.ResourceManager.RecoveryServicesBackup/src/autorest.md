@@ -32,7 +32,7 @@ rename-mapping:
   PrivateEndpointConnectionResource: BackupPrivateEndpointConnection
   ProtectedItem: BackupProtectedItemProperties
   ProtectedItemResource: BackupProtectedItem
-  ProtectionContainer: BackupProtectionContainerProperties
+  ProtectionContainer: BackupGenericProtectionContainer
   ProtectionContainerResource: BackupProtectionContainer
   ProtectionIntent: BackupProtectionIntentProperties
   ProtectionIntentResource: BackupProtectionIntent
@@ -183,6 +183,7 @@ rename-mapping:
   TriggerDataMoveRequest.pauseGC: DoesPauseGC
   ProtectedItem.sourceResourceId: -|arm-id
   ProtectedItem.policyId: -|arm-id
+  ProtectedItem.lastRecoveryPoint: LastRecoverOn
   ProtectionIntent.sourceResourceId: -|arm-id
   ProtectionIntent.itemId: -|arm-id
   ProtectionIntent.policyId: -|arm-id
@@ -248,6 +249,22 @@ rename-mapping:
   IaasVMRestoreWithRehydrationRequest: IaasVmRestoreWithRehydrationContent
   ResourceGuardOperationDetail.defaultResourceRequest: DefaultResourceId|arm-id
   InquiryInfo: WorkloadContainerInquiryInfo
+  ProvisioningState: BackupPrivateEndpointConnectionProvisioningState
+  ProtectionState: BackupProtectionState
+  ProtectionStatus: BackupProtectionStatus
+  AzureFileshareProtectedItemExtendedInfo.oldestRecoveryPoint: OldestRecoverOn
+  AzureIaaSVMProtectedItemExtendedInfo.oldestRecoveryPoint: OldestRecoverOn
+  AzureSqlProtectedItemExtendedInfo.oldestRecoveryPoint: OldestRecoverOn
+  AzureVmWorkloadProtectedItemExtendedInfo.oldestRecoveryPoint: OldestRecoverOn
+  DPMProtectedItemExtendedInfo.oldestRecoveryPoint: OldestRecoverOn
+  DPMProtectedItemExtendedInfo.onPremiseOldestRecoveryPoint: OnPremiseOldestRecoverOn
+  DPMProtectedItemExtendedInfo.onPremiseLatestRecoveryPoint: OnPremiseLatestRecoverOn
+  MabFileFolderProtectedItemExtendedInfo.oldestRecoveryPoint: OldestRecoverOn
+  AzureIaaSVMProtectionPolicy.instantRpRetentionRangeInDays: InstantRPRetentionRangeInDays
+  AzureVmWorkloadItem.subinquireditemcount: SubInquiredItemCount
+  AzureVmWorkloadProtectableItem.subinquireditemcount: SubInquiredItemCount
+  AzureVmWorkloadProtectableItem.subprotectableitemcount: SubProtectableItemCount
+  AzureVmWorkloadProtectableItem.prebackupvalidation: PreBackupValidation
 
 format-by-name-rules:
   'tenantId': 'uuid'
@@ -345,6 +362,10 @@ directive:
       $.BMSBackupSummariesQueryObject.properties.type['x-ms-client-name'] = 'BackupManagementType';
       $.BMSBackupSummariesQueryObject.properties.type['x-ms-enum']['name'] = 'BackupManagementType';
       $.RecoveryPointRehydrationInfo.properties.rehydrationRetentionDuration['format'] = 'duration';
+  - from: bms.json
+    where: $.parameters
+    transform: >
+      $.AzureRegion['x-ms-format'] = 'azure-location';
   # Autorest.CSharp can't find `nextLink` from parent (allOf), so here workaround.
   # Issues filed here: https://github.com/Azure/autorest.csharp/issues/2740.
   - from: bms.json

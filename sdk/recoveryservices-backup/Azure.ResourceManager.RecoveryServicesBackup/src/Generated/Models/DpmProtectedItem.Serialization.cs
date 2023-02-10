@@ -54,10 +54,10 @@ namespace Azure.ResourceManager.RecoveryServicesBackup.Models
                 writer.WritePropertyName("policyId");
                 writer.WriteStringValue(PolicyId);
             }
-            if (Optional.IsDefined(LastRecoveryPoint))
+            if (Optional.IsDefined(LastRecoverOn))
             {
                 writer.WritePropertyName("lastRecoveryPoint");
-                writer.WriteStringValue(LastRecoveryPoint.Value, "O");
+                writer.WriteStringValue(LastRecoverOn.Value, "O");
             }
             if (Optional.IsDefined(BackupSetName))
             {

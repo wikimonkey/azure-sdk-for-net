@@ -39,7 +39,7 @@ namespace Azure.ResourceManager.RecoveryServicesBackup.Samples
             SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
 
             // invoke the operation
-            string azureRegion = "southeastasia";
+            AzureLocation azureRegion = new AzureLocation("southeastasia");
             PreValidateEnableBackupContent content = new PreValidateEnableBackupContent()
             {
                 ResourceType = BackupDataSourceType.Vm,

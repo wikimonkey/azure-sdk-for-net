@@ -115,7 +115,7 @@ namespace Azure.ResourceManager.RecoveryServicesBackup.Samples
             {
                 Properties = new BackupPrivateEndpointConnectionProperties()
                 {
-                    ProvisioningState = ProvisioningState.Succeeded,
+                    ProvisioningState = BackupPrivateEndpointConnectionProvisioningState.Succeeded,
                     PrivateEndpointId = new ResourceIdentifier("/subscriptions/04cf684a-d41f-4550-9f70-7708a3a2283b/resourceGroups/gaallaRG/providers/Microsoft.Network/privateEndpoints/gaallatestpe3"),
                     PrivateLinkServiceConnectionState = new RecoveryServicesBackupPrivateLinkServiceConnectionState()
                     {

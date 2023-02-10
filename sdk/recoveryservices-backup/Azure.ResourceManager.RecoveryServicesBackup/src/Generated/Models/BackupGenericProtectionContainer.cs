@@ -9,17 +9,17 @@ namespace Azure.ResourceManager.RecoveryServicesBackup.Models
 {
     /// <summary>
     /// Base class for container with backup items. Containers with specific workloads are derived from this class.
-    /// Please note <see cref="BackupProtectionContainerProperties"/> is the base class. According to the scenario, a derived class of the base class might need to be assigned here, or this property needs to be casted to one of the possible derived classes.
+    /// Please note <see cref="BackupGenericProtectionContainer"/> is the base class. According to the scenario, a derived class of the base class might need to be assigned here, or this property needs to be casted to one of the possible derived classes.
     /// The available derived classes include <see cref="BackupServerContainer"/>, <see cref="SqlContainer"/>, <see cref="WorkloadContainer"/>, <see cref="DpmContainer"/>, <see cref="GenericContainer"/>, <see cref="IaasVmContainer"/>, <see cref="IaasClassicComputeVmContainer"/>, <see cref="IaasComputeVmContainer"/>, <see cref="SqlAvailabilityGroupWorkloadProtectionContainer"/>, <see cref="StorageContainer"/>, <see cref="VmAppContainerProtectionContainer"/> and <see cref="MabContainer"/>.
     /// </summary>
-    public abstract partial class BackupProtectionContainerProperties
+    public abstract partial class BackupGenericProtectionContainer
     {
-        /// <summary> Initializes a new instance of BackupProtectionContainerProperties. </summary>
-        protected BackupProtectionContainerProperties()
+        /// <summary> Initializes a new instance of BackupGenericProtectionContainer. </summary>
+        protected BackupGenericProtectionContainer()
         {
         }
 
-        /// <summary> Initializes a new instance of BackupProtectionContainerProperties. </summary>
+        /// <summary> Initializes a new instance of BackupGenericProtectionContainer. </summary>
         /// <param name="friendlyName"> Friendly name of the container. </param>
         /// <param name="backupManagementType"> Type of backup management for the container. </param>
         /// <param name="registrationStatus"> Status of registration of the container with the Recovery Services Vault. </param>
@@ -31,7 +31,7 @@ namespace Azure.ResourceManager.RecoveryServicesBackup.Models
         /// Backup is VMAppContainer
         /// </param>
         /// <param name="protectableObjectType"> Type of the protectable object associated with this container. </param>
-        internal BackupProtectionContainerProperties(string friendlyName, BackupManagementType? backupManagementType, string registrationStatus, string healthStatus, ProtectableContainerType containerType, string protectableObjectType)
+        internal BackupGenericProtectionContainer(string friendlyName, BackupManagementType? backupManagementType, string registrationStatus, string healthStatus, ProtectableContainerType containerType, string protectableObjectType)
         {
             FriendlyName = friendlyName;
             BackupManagementType = backupManagementType;

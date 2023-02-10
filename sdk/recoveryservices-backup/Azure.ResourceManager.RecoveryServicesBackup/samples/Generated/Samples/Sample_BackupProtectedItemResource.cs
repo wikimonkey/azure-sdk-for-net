@@ -158,7 +158,7 @@ namespace Azure.ResourceManager.RecoveryServicesBackup.Samples
             {
                 Properties = new IaasComputeVmProtectedItem()
                 {
-                    ProtectionState = ProtectionState.ProtectionStopped,
+                    ProtectionState = BackupProtectionState.ProtectionStopped,
                     SourceResourceId = new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/netsdktestrg/providers/Microsoft.Compute/virtualMachines/netvmtestv2vm1"),
                 },
             };

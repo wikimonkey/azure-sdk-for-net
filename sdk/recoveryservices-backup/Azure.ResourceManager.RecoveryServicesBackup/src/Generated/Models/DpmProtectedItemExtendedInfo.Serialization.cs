@@ -48,25 +48,25 @@ namespace Azure.ResourceManager.RecoveryServicesBackup.Models
                 writer.WritePropertyName("lastRefreshedAt");
                 writer.WriteStringValue(LastRefreshedOn.Value, "O");
             }
-            if (Optional.IsDefined(OldestRecoveryPoint))
+            if (Optional.IsDefined(OldestRecoverOn))
             {
                 writer.WritePropertyName("oldestRecoveryPoint");
-                writer.WriteStringValue(OldestRecoveryPoint.Value, "O");
+                writer.WriteStringValue(OldestRecoverOn.Value, "O");
             }
             if (Optional.IsDefined(RecoveryPointCount))
             {
                 writer.WritePropertyName("recoveryPointCount");
                 writer.WriteNumberValue(RecoveryPointCount.Value);
             }
-            if (Optional.IsDefined(OnPremiseOldestRecoveryPoint))
+            if (Optional.IsDefined(OnPremiseOldestRecoverOn))
             {
                 writer.WritePropertyName("onPremiseOldestRecoveryPoint");
-                writer.WriteStringValue(OnPremiseOldestRecoveryPoint.Value, "O");
+                writer.WriteStringValue(OnPremiseOldestRecoverOn.Value, "O");
             }
-            if (Optional.IsDefined(OnPremiseLatestRecoveryPoint))
+            if (Optional.IsDefined(OnPremiseLatestRecoverOn))
             {
                 writer.WritePropertyName("onPremiseLatestRecoveryPoint");
-                writer.WriteStringValue(OnPremiseLatestRecoveryPoint.Value, "O");
+                writer.WriteStringValue(OnPremiseLatestRecoverOn.Value, "O");
             }
             if (Optional.IsDefined(OnPremiseRecoveryPointCount))
             {
