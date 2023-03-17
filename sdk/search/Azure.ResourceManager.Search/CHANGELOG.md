@@ -1,11 +1,15 @@
 # Release History
 
-## 1.1.0 (2023-03-14)
+## 1.1.0 (2023-03-17)
 
 ### Features Added
 
 - Added support for '2022-09-01' management plane API version.
 - Added support for enabling RBAC authentication on search services.
+
+### Other Changes
+
+- Upgraded dependent `Azure.Core` to `1.30.0`.
 
 ## 1.0.1 (2023-02-20)
 
